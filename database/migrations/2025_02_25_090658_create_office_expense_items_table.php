@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('office_expense_items', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('office_expense_purchase_id');
+            $table->date('purchase_date');
+            $table->integer('total_expense');
+            $table->text('notes');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('office_expense_items');
+    }
+};
